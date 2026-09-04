@@ -32,6 +32,7 @@ module.exports = payment => {
   return {
     id: payment.payment_hash,
     is_canceled: state === failureReason.canceled,
+    is_error: state === failureReason.error,
     is_insufficient_balance: state === failureReason.insufficient_balance,
     is_invalid_payment: state === failureReason.invalid_payment,
     is_pathfinding_timeout: state === failureReason.pathfinding_timeout_failed,

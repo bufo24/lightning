@@ -181,6 +181,11 @@ const tests = [
     expected: makeExpected({code: 503, message: 'InvalidOnionHmac'}),
   },
   {
+    args: makeFailure({fail: {code: 'INVALID_ONION_BLINDING'}}),
+    description: 'Invalid onion blinding is mapped to a payment failure',
+    expected: makeExpected({code: 503, message: 'InvalidOnionBlinding'}),
+  },
+  {
     args: makeFailure({fail: {code: 'INVALID_ONION_KEY'}}),
     description: 'Invalid onion key is mapped to a payment failure',
     expected: makeExpected({code: 503, message: 'InvalidOnionKey'}),
@@ -194,6 +199,11 @@ const tests = [
     args: makeFailure({fail: {code: 'INVALID_ONION_VERSION'}}),
     description: 'Invalid onion version is mapped to a payment failure',
     expected: makeExpected({code: 503, message: 'InvalidOnionVersion'}),
+  },
+  {
+    args: makeFailure({fail: {code: 'INTERNAL_FAILURE'}}),
+    description: 'Internal failure is mapped to a payment failure',
+    expected: makeExpected({code: 503, message: 'InternalFailure'}),
   },
   {
     args: makeFailure({fail: {code: 'INVALID_REALM'}}),

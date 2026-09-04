@@ -8,6 +8,10 @@ export type FailureFromPaymentArgs = {
 export type FailureFromPaymentResult = {
   /** Payment Hash Hex String */
   id: string;
+  /** Payment Was Canceled Bool */
+  is_canceled: boolean;
+  /** Payment Failed With A Non-Recoverable Error Bool */
+  is_error: boolean;
   /** Payment Failed Due to Insufficient Balance Bool */
   is_insufficient_balance: boolean;
   /** Payment Failed Due to Invalid Details Rejection Bool */
@@ -20,9 +24,35 @@ export type FailureFromPaymentResult = {
 
 export function failureFromPayment(payment: {
   payment_hash: string,
+  failure_reason: 'FAILURE_REASON_CANCELED';
+}): {
+  id: string,
+  is_canceled: true;
+  is_error: false;
+  is_insufficient_balance: false;
+  is_invalid_payment: false;
+  is_pathfinding_timeout: false;
+  is_route_not_found: false;
+};
+export function failureFromPayment(payment: {
+  payment_hash: string,
+  failure_reason: 'FAILURE_REASON_ERROR';
+}): {
+  id: string,
+  is_canceled: false;
+  is_error: true;
+  is_insufficient_balance: false;
+  is_invalid_payment: false;
+  is_pathfinding_timeout: false;
+  is_route_not_found: false;
+};
+export function failureFromPayment(payment: {
+  payment_hash: string,
   failure_reason: 'FAILURE_REASON_INSUFFICIENT_BALANCE';
 }): {
   id: string,
+  is_canceled: false;
+  is_error: false;
   is_insufficient_balance: true;
   is_invalid_payment: false;
   is_pathfinding_timeout: false;
@@ -33,6 +63,8 @@ export function failureFromPayment(payment: {
   failure_reason: 'FAILURE_REASON_INCORRECT_PAYMENT_DETAILS';
 }): {
   id: string,
+  is_canceled: false;
+  is_error: false;
   is_insufficient_balance: false;
   is_invalid_payment: true;
   is_pathfinding_timeout: false;
@@ -43,6 +75,8 @@ export function failureFromPayment(payment: {
   failure_reason: 'FAILURE_REASON_TIMEOUT';
 }): {
   id: string,
+  is_canceled: false;
+  is_error: false;
   is_insufficient_balance: false;
   is_invalid_payment: false;
   is_pathfinding_timeout: true;
@@ -53,6 +87,8 @@ export function failureFromPayment(payment: {
   failure_reason: 'FAILURE_REASON_NO_ROUTE';
 }): {
   id: string,
+  is_canceled: false;
+  is_error: false;
   is_insufficient_balance: false;
   is_invalid_payment: false;
   is_pathfinding_timeout: false;

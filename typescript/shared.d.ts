@@ -58,6 +58,8 @@ export type AttemptState = CommonStatus;
 export type CommitmentType = 'ANCHORS' | 'STATIC_REMOTE_KEY' | 'LEGACY';
 
 export type FailureReason =
+  | 'FAILURE_REASON_CANCELED'
+  | 'FAILURE_REASON_ERROR'
   | 'FAILURE_REASON_INCORRECT_PAYMENT_DETAILS'
   | 'FAILURE_REASON_INSUFFICIENT_BALANCE'
   | 'FAILURE_REASON_TIMEOUT'

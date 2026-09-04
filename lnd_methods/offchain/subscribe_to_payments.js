@@ -65,6 +65,7 @@ const type = 'router';
   {
     id: <Payment Hash Hex String>
     is_canceled: <Payment Canceled Bool>
+    is_error: <Payment Failed With A Non-Recoverable Error Bool>
     is_insufficient_balance: <Failed Due To Lack of Balance Bool>
     is_invalid_payment: <Failed Due to Payment Rejected At Destination Bool>
     is_pathfinding_timeout: <Failed Due to Pathfinding Timeout Bool>

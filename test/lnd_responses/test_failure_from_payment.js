@@ -10,6 +10,7 @@ const makeExpected = overrides => {
   const expected = {
     id,
     is_canceled: false,
+    is_error: false,
     is_insufficient_balance: false,
     is_invalid_payment: false,
     is_pathfinding_timeout: false,
@@ -22,6 +23,14 @@ const makeExpected = overrides => {
 };
 
 const tests = [
+  {
+    args: {
+      failure_reason: 'FAILURE_REASON_ERROR',
+      payment_hash: id,
+    },
+    description: 'Error is mapped',
+    expected: makeExpected({is_error: true}),
+  },
   {
     args: {
       failure_reason: 'FAILURE_REASON_INSUFFICIENT_BALANCE',

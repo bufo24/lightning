@@ -81,6 +81,8 @@ export interface SubscribeToPaymentsFailedEvent {
   id: string;
   /** Payment Canceled Bool */
   is_canceled: boolean;
+  /** Payment Failed With A Non-Recoverable Error Bool */
+  is_error: boolean;
   /** Failed Due To Lack of Balance Bool */
   is_insufficient_balance: boolean;
   /** Failed Due to Payment Rejected At Destination Bool */

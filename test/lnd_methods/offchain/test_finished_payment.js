@@ -50,6 +50,11 @@ const makeArgs = overrides => {
 
 const tests = [
   {
+    args: makeArgs({confirmed: undefined, failed: {is_error: true}}),
+    description: 'Failed due to a non-recoverable error',
+    error: [503, 'PaymentExecutionError'],
+  },
+  {
     args: makeArgs({confirmed: undefined}),
     description: 'Either failed or confirmed is required',
     error: [503, 'UnexpectedOutcomeOfPayViaDetails'],

@@ -9,6 +9,24 @@ expectError(failureFromPayment({payment_hash, failure_reason: 'invalid failure r
 
 expectType<{
   id: string;
+  is_canceled: true;
+  is_error: false;
+  is_insufficient_balance: false;
+  is_invalid_payment: false;
+  is_pathfinding_timeout: false;
+  is_route_not_found: false;
+}>(failureFromPayment({payment_hash, failure_reason: 'FAILURE_REASON_CANCELED'}));
+expectType<{
+  id: string;
+  is_canceled: false;
+  is_error: true;
+  is_insufficient_balance: false;
+  is_invalid_payment: false;
+  is_pathfinding_timeout: false;
+  is_route_not_found: false;
+}>(failureFromPayment({payment_hash, failure_reason: 'FAILURE_REASON_ERROR'}));
+expectType<{
+  id: string;
   is_insufficient_balance: boolean;
   is_invalid_payment: boolean;
   is_pathfinding_timeout: boolean;

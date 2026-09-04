@@ -10,6 +10,10 @@ export type GetPaymentArgs = AuthenticatedLightningArgs<{
 
 export type GetPaymentResult = {
   failed?: {
+    /** Payment Was Canceled */
+    is_canceled: boolean;
+    /** Payment Failed With A Non-Recoverable Error */
+    is_error: boolean;
     /** Failed Due To Lack of Balance */
     is_insufficient_balance: boolean;
     /** Failed Due to Payment Rejected At Destination */

@@ -134,6 +134,9 @@ module.exports = ({channel, failure, index, key, keys}) => {
   case 'INVALID_ONION_HMAC':
     return {details, code: 503, message: 'InvalidOnionHmac'};
 
+  case 'INVALID_ONION_BLINDING':
+    return {details, code: 503, message: 'InvalidOnionBlinding'};
+
   case 'INVALID_ONION_KEY':
     return {details, code: 503, message: 'InvalidOnionKey'};
 
@@ -142,6 +145,9 @@ module.exports = ({channel, failure, index, key, keys}) => {
 
   case 'INVALID_ONION_VERSION':
     return {details, code: 503, message: 'InvalidOnionVersion'};
+
+  case 'INTERNAL_FAILURE':
+    return {details, code: 503, message: 'InternalFailure'};
 
   case 'INVALID_REALM':
     return {details, code: 503, message: 'InvalidRealm'};
